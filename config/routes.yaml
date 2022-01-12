@@ -1,0 +1,48 @@
+index:
+   path: /
+   controller: App\Controller\HomepageController::index
+
+articles_index:
+  path: /index
+  controller: App\Controller\ArticlesController::index
+
+articles_add:
+  path: /new
+  controller: App\Controller\ArticlesController::new
+
+articles_show:
+  path: /show/{url}
+  controller: App\Controller\ArticlesController::show
+
+articles_edit:
+  path: /{id}/edit
+  controller: App\Controller\ArticlesController::edit
+  requirements:
+    id: '\d+'
+
+articles_delete:
+  path: /{id}
+  controller: App\Controller\ArticlesController::delete
+  requirements:
+    id: '\d+'
+
+author_new:
+  path: /new
+  controller: App\Controller\AuthorController::add
+
+author_show:
+  path: /show/{url}
+  controller: App\Controller\AuthorController::show
+
+author_edit:
+  path: /{id}/edit
+  controller: App\Controller\AuthorController::edit
+  requirements:
+    id: '\d+'
+
+author_delete:
+  path: /{id}
+  controller: App\Controller\AuthorController::delete
+  requirements:
+    id: '\d+'
+

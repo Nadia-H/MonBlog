@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Author index{% endblock %}
+
+{% block body %}
+            <div id="about" class="section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="page-title text-center">
+                            <h1>Meet Our Authors</h1>
+                            <hr class="pg-titl-bdr-btm"/>
+                        </div>
+                        {% for author in authors %}
+                            <div class="autoplay">
+                                <div class="col-md-6">
+                                    <div class="team-info">
+                                        <div class="img-sec">
+                                            <img src="{{ asset('assets/img/agent1.jpg')}}" class="img-responsive">
+                                        </div>
+                                        <div class="fig-caption">
+                                            <h3>{{ author.firstName }} {{ author.lastName }}</h3>
+                                            <span><a href="{{ path('author_show', {'id': author.id}) }}">show</a></span>
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                            <p class="marb-20">author.registeredDate ? author.registeredDate|date('Y-m-d H:i:s') : ''</p>
+
+                                            <span><a href="{{ path('author_edit', {'id': author.id}) }}">edit</a></span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="autoplay">
+                                <div class="col-md-6">
+                                    <div class="team-info">
+                                        <p>No records found</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                <a href="{{ path('author_new') }}">Create new author</a>
+                </div>
+            </div>
+            <!--TEAM END-->
+{% endblock %}
