@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TagsType extends AbstractType
+class TagsType extends AbstractType //le formulaire du type Tags pour la gestion des tags du blog
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

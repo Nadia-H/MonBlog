@@ -12,39 +12,11 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method ArticleTags[]    findAll()
  * @method ArticleTags[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArticleTagsRepository extends ServiceEntityRepository
+class ArticleTagsRepository extends ServiceEntityRepository //ce repository sert à recupérer les données de la table articlesTags dans la bd
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ArticleTags::class);
     }
 
-    // /**
-    //  * @return ArticleTags[] Returns an array of ArticleTags objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?ArticleTags
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

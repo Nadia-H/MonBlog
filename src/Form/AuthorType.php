@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AuthorType extends AbstractType
+class AuthorType extends AbstractType //le formulaire du type author pour la gestion des auteurs
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

@@ -40,6 +40,7 @@ class Author
     private $password;
 
     /**
+     * @var string The hashed password
      * @ORM\Column(type="datetime")
      */
     private $registered_date;

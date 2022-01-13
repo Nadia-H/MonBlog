@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Tags index</h1>
-
+    {% if is_granted('ROLE_EDITOR') %}
     <table class="table">
         <thead>
             <tr>
@@ -34,4 +34,5 @@
     </table>
 
     <a href="{{ path('tags_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

@@ -10,7 +10,7 @@
                             <h1>Meet Our Authors</h1>
                             <hr class="pg-titl-bdr-btm"/>
                         </div>
-                        {% for author in authors %}
+                        {% for auteur in author %}
                             <div class="autoplay">
                                 <div class="col-md-6">
                                     <div class="team-info">
@@ -19,11 +19,11 @@
                                         </div>
                                         <div class="fig-caption">
                                             <h3>{{ author.firstName }} {{ author.lastName }}</h3>
-                                            <span><a href="{{ path('author_show', {'id': author.id}) }}">show</a></span>
+                                            <button type="submit"><a href="{{ path('author_show', {'id': author.id}) }}">show</a></button>
                                             {% if is_granted('ROLE_ADMIN') %}
                                             <p class="marb-20">author.registeredDate ? author.registeredDate|date('Y-m-d H:i:s') : ''</p>
 
-                                            <span><a href="{{ path('author_edit', {'id': author.id}) }}">edit</a></span>
+                                            <button type="submit"><a href="{{ path('author_edit', {'id': author.id}) }}">edit</a></button>
                                             {% endif %}
                                         </div>
                                     </div>

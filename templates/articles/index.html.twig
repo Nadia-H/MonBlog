@@ -3,41 +3,54 @@
 {% block title %}Articles index{% endblock %}
 
 {% block body %}
-    <h1>Articles index</h1>
+    <!--affichage des articles-->
+    <div id="portfolio">
+        <div class="container">
+            <div class="page-title text-center">
+                <h1>List of all Articles</h1>
+                <hr class="pg-titl-bdr-btm">
+            </div>
+            {% for tag in Tags %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="portfolio-flters">
+                        <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All</li>
+                        <li data-filter=".filter-app">tag.name</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+            {% for article in Articles %}
+            <div class="row" id="portfolio-wrapper">
+                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+                    <a href="{{ path('articles_show') }}">
+                        <img src="{{ asset('assets/img/portfolio/app1.jpg')}}" alt="">
+                        <div class="details">
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <h5>{{ article.id }}</h5>
+                            {% endif %}
+                            <h4>article.title</h4>
+                            <h4>article.author_id</h4>
+                            <p>{{ article.publishedDate ? article.publishedDate|date('Y-m-d H:i:s') : '' }}</p>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <p>{{ article.creationDate ? article.creationDate|date('Y-m-d H:i:s') : '' }}</p>
+                            {% endif %}
+                            <p>{{ article.lastModified ? article.lastModified|date('Y-m-d H:i:s') : '' }}</p>
+                            <span>{{ article.content }}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% else %}
+                <div class="col-lg-3 col-md-6 portfolio-item filter-card">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Published_date</th>
-                <th>Content</th>
-                <th>Creation_date</th>
-                <th>Last_modified</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.publishedDate ? article.publishedDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.content }}</td>
-                <td>{{ article.creationDate ? article.creationDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.lastModified ? article.lastModified|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('articles_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!--fin affichage des articles-->
+    <!--affichage des commenaires-->
+    {% include "coments/index.html.twig" %}
+    <!--affichage des commenaires fin-->
     <a href="{{ path('articles_new') }}">Create new</a>
 {% endblock %}

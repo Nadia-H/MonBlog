@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ArticlesRepository::class)
  */
-class Articles
+class Articles //class article qui représente la table articles dans la base de donnée 'monblog'
 {
     /**
      * @ORM\Id
@@ -23,42 +23,46 @@ class Articles
      * @ORM\ManyToOne(targetEntity=author::class, inversedBy="list_articles")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $author_id;
+    private $author_id; //l'auteur de l'article, cet attribut relie la table articles à la table author.
+    // Un auteur peut rédiger plusieurs articles mais un articles n'a qu'un seul auteur
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $title;
+    private $title; //le titre de l'article
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $published_date;
+    private $published_date; //la date de publication de l'article
 
     /**
      * @ORM\Column(type="text")
      */
-    private $content;
+    private $content; //le contenu de l'article
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $creation_date;
+    private $creation_date; //la date de création de l'article. Cette date représente
+    // la date à laquelle un auteur a crée l'article et commencé à le rédigé
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $last_modified;
+    private $last_modified; //la dernière date de modification: que un article déjà publié ou encore en rédaction
 
     /**
-     * @ORM\ManyToMany(targetEntity=PostTags::class, mappedBy="article_id")
+     * @ORM\ManyToMany(targetEntity=ArticleTags::class, mappedBy="article_id")
      */
-    private $aricle_tags;
+    private $article_tags; //les tags associés à l'article. Cet attribut relie la table ArticlesTags et
+    // la table articles. Un article peut être lié à plusieurs éléments de la table articlesTags et vice-versa
 
     /**
      * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="article_id", orphanRemoval=true)
      */
-    private $article_comments;
+    private $article_comments; //les commentaires relatif à un article. Cet attribu relie la table Articles
+    // et la table comments
 
     public function __construct()
     {

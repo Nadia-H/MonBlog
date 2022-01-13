@@ -21,7 +21,7 @@ class Comments
      * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="article_comments")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $article_id;
+    private $article_id; //l'article relatif aux commentaires
 
     /**
      * @ORM\Column(type="text")
@@ -31,7 +31,7 @@ class Comments
     /**
      * @ORM\Column(type="datetime")
      */
-    private $published;
+    private $published; //la date de publication du commentaire
 
     /**
      * @ORM\Column(type="datetime", nullable=true)

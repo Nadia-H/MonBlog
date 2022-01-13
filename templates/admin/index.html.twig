@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Utilisateurs{% endblock %}
+
+{% block body %}
+<h1>Litse des Utilisateurs</h1>
+<table id="users" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>email</th>
+        <th>roles</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+            {% for role in user.roles %}
+                {% elseif role=="ROLE_EDITOR" %}
+                    Editeur
+                {% elseif role=="ROLE_ADMIN" %}
+                    Administrateur
+                {% endif %}
+            {% endfor %}
+        </td>
+        <td>
+            <a href="" class="btn btndark">Modifier</a>
+        </td>
+    </tr>
+{% endblock %}
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

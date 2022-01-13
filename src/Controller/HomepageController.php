@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomepageController extends AbstractController
+class HomepageController extends AbstractController //ce controller sert à gérer l'affichage de la page d'acceuil
 {
     /**
      * @Route("/homepage", name="homepage")
